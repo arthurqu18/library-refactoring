@@ -6,13 +6,25 @@ class Price:
         pass
 
 class RegularPrice(Price):
-    pass
+    def get_charge(self, days_rented: int) -> float:
+        return 2 if days_rented <= 2 else 2 + (days_rented - 2) * 1.5
+
+    def get_frequent_renter_points(self, days_rented: int) -> float:
+        return 1
 
 class NewReleasedPrice(Price):
-    pass
+    def get_charge(self, days_rented: int) -> float:
+        return days_rented * 3
+
+    def get_frequent_renter_points(self, days_rented: int) -> float:
+        return 1 if days_rented <= 1 else 2
 
 class ChildrenPrice(Price):
-    pass
+    def get_charge(self, days_rented: int) -> float:
+        return 1.5 if days_rented <= 3 else 1.5 + (days_rented - 3) * 1.5
+
+    def get_frequent_renter_points(self, days_rented: int) -> float:
+        return 1
 
 class Book:
 
